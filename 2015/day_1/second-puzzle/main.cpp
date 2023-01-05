@@ -46,7 +46,6 @@ int main (int argc, char *argv[])
 	string input_file = read_file("../input.txt");
 	int result = find_result(input_file);
 
-	cout << input_file << endl;
 	cout << result << endl;
 	
 	return 0;
