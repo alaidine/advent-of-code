@@ -45,17 +45,15 @@ vector<int> update_position(vector<int> current_position, char direction) {
   return current_position;
 }
 
-int read_file(string input) {
+int solution_first_part(string input) {
   ifstream file(input);
   string line;
-  string file_read;
 
 
   vector<int> current_position = {0, 0};
   set<vector<int>> history_of_positions = {
     {0, 0}
   };
-
   while (getline(file, line)) {
     for (char c : line) {
       current_position = update_position(current_position, c);
@@ -66,10 +64,34 @@ int read_file(string input) {
   return history_of_positions.size();
 }
 
-int main() {
-  int input = read_file("./input.txt");
+int solution_second_part(string input) {
+  ifstream file(input);
+  string line;
 
-  cout << "the number of houses visited by santa is equal to: " << input << endl;
+  vector<int> santas_current_position = {0, 0};
+  vector<int> robo_current_position = {0, 0};
+  set<vector<int>> history_of_positions = {
+    {0, 0}
+  };
+  while(getline(file, line)) {
+    for (long unsigned int i = 1; i < line.size(); i = i + 2) {
+      santas_current_position = update_position(santas_current_position, line[i-1]);
+      robo_current_position = update_position(robo_current_position, line[i]);
+
+      history_of_positions.insert(santas_current_position);
+      history_of_positions.insert(robo_current_position);
+    }
+  }
+
+  return history_of_positions.size();
+}
+
+int main() {
+  int first_part = solution_first_part("./input.txt");
+  int second_part = solution_second_part("./input.txt");
+
+  cout << "the number of houses visited by santa is equal to: " << first_part << endl;
+  cout << "the number of houses visited by santa and robo santa is equal to: " << second_part << endl;
 
   return 0;
 }
