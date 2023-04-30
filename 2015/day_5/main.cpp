@@ -4,6 +4,22 @@
 
 using namespace std;
 
+// first property: return true if the input has at least three vowels
+bool first_property() {
+
+	return true;
+}
+
+// second property: return true if the input contains at least on letter that appears twice in a row
+bool second_property() {
+	return true;
+}
+
+// second property: return true if the input doesn't contain the strings ab, sd, pq or sx
+bool third_property() {
+	return true;
+}
+
 bool is_string_nice(string input) {
 	// check if a string is nice
 
