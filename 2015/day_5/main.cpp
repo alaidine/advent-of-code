@@ -1,6 +1,8 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <cstdio>
+#include <vector>
 
 using namespace std;
 
@@ -15,23 +17,36 @@ bool first_property(string input) {
 
 	if (vowel_count < 3) return false;
 
-	return true
-}
-
-// second property: return true if the input contains at least on letter that appears twice in a row
-bool second_property() {
 	return true;
 }
 
+// second property: return true if the input contains at least on letter that appears twice in a row
+bool second_property(string input) {
+	for (int i = 0; i < input.length()-1; i++) {
+		if (input[i] == input[i++]) return true;
+	}
+
+	return false;
+}
+
 // second property: return true if the input doesn't contain the strings ab, sd, pq or sx
-bool third_property() {
+bool third_property(string input) {
+	vector<string> invalid_strings = {"ab", "cd", "pq", "xy"};
+	
+	
+	for (vector<string>::iterator t = invalid_strings.begin(); t != invalid_strings.end(); ++t) {
+		if (input.find(*t) != std::string::npos) return false;
+	} 
+
 	return true;
 }
 
 bool is_string_nice(string input) {
 	// check if a string is nice
+	
+	if (first_property(input) && second_property(input) && third_property(input)) return true;
 
-	return true;
+	return false;
 }
 
 void read_file(string input) {
