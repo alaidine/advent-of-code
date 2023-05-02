@@ -5,9 +5,17 @@
 using namespace std;
 
 // first property: return true if the input has at least three vowels
-bool first_property() {
+bool first_property(string input) {
+	int vowel_count = 0;
+	string vowels = "aeiou";
 
-	return true;
+	for (int i = 0; i < input.length(); i++) {
+		if (vowels.find(input[i]) != string::npos) vowel_count++;
+	}
+
+	if (vowel_count < 3) return false;
+
+	return true
 }
 
 // second property: return true if the input contains at least on letter that appears twice in a row
