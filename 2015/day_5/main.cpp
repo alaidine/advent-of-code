@@ -15,9 +15,9 @@ bool first_property(string input) {
 		if (vowels.find(input[i]) != string::npos) vowel_count++;
 	}
 
-	if (vowel_count < 3) return false;
+	if (vowel_count >= 3) return true;
 
-	return true;
+	return false;
 }
 
 // second property: return true if the input contains at least on letter that appears twice in a row
@@ -33,10 +33,8 @@ bool second_property(string input) {
 bool third_property(string input) {
 	vector<string> invalid_strings = {"ab", "cd", "pq", "xy"};
 	
-	
-	for (vector<string>::iterator t = invalid_strings.begin(); t != invalid_strings.end(); ++t) {
+	for (vector<string>::iterator t = invalid_strings.begin(); t != invalid_strings.end(); ++t)
 		if (input.find(*t) != std::string::npos) return false;
-	} 
 
 	return true;
 }
@@ -58,7 +56,6 @@ void read_file(string input) {
 		while (getline(file, line)) {
 			// the new line character is not included in the getline() function
 			cout << line << endl;
-
 			if (is_string_nice(line)) ok_strings_counter++; 
 		}
 	}
