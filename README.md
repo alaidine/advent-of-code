@@ -1,1 +1,1 @@
-# advent-of-code solutions
+# My AOF solutions
